@@ -14,10 +14,7 @@ int main()
     start_enter(file);
     bubble_sort(file,file_graphic);
     //delete_dek();
-    
-    
     sort_piram(file);
-    
     fclose(file);
     fclose(file_graphic);
 }
