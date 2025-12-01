@@ -253,3 +253,113 @@ int find_element_by_way(Elem *p){
 }
 
 
+void sort_piram(FILE *file)
+{
+    BegL=BegL_Piram;
+    EndL=EndL_Piram;
+    pk=BegL;
+    
+
+
+
+   
+    //создаём нижний ряд
+    for(int i=(count_elements/2); i>=0; i--)
+    {
+        int root=i;
+        int bottom=count_elements;
+        int maxChild;
+        int done =0;
+        
+        while( (root*2<=bottom) && (!done))
+        {
+            
+            if(root*2==bottom) maxChild=root*2;
+            
+            else if(find_element_by_num(root*2)<find_element_by_num(root*2+1))
+            {
+                
+                maxChild= root*2;
+            }
+            else 
+            {
+                
+                maxChild = root*2+1;
+            }
+            if(find_element_by_num(root)>find_element_by_num(maxChild))
+            {
+                
+                change_elements(find_element_by_count(root),find_element_by_count(maxChild));
+                root=maxChild;
+                
+            
+            }
+            else done=1;
+            
+            
+        
+        }
+        
+    }
+
+    pk=BegL;
+        
+    while (pk!=EndL)
+    {
+            
+        printf("%d ",pk->inf);
+        pk=pk->next;
+    }
+    printf("%d\n",pk->inf);
+
+    for(int i = count_elements; i>=2; i--)
+    {
+        printf("%d %d\n",find_element_by_num(0),find_element_by_num(i));
+        change_elements(find_element_by_count(0),find_element_by_count(i));
+        printf("da");
+        int root=1;
+        int bottom=i-1;;
+        int maxChild;
+        int done =0;
+        
+        while( (root*2<=bottom) && (!done))
+        {
+            
+            if(root*2==bottom) maxChild=root*2;
+            
+            else if(find_element_by_num(root*2)<find_element_by_num(root*2+1))
+            {
+                
+                maxChild= root*2;
+            }
+            else 
+            {
+                
+                maxChild = root*2+1;
+            }
+            if(find_element_by_num(root)>find_element_by_num(maxChild))
+            {
+                
+                change_elements(find_element_by_count(root),find_element_by_count(maxChild));
+                root=maxChild;
+                
+            
+            }
+            else done=1;
+            
+            
+        
+        }
+    }
+    
+    pk=BegL;
+        
+    while (pk!=EndL)
+    {
+            
+        fprintf(file,"%d ",pk->inf);
+        pk=pk->next;
+    }
+    fprintf(file,"%d\n",pk->inf);
+    
+}
