@@ -15,6 +15,7 @@ Elem *p,*pk,*po;
 int count_elements=0;
 char enter[1000];
 char enter_piram[1000];
+
 void change_elements(Elem *p, Elem *pk)
 {  
     if( (p==BegL) && (pk==EndL) ) 
@@ -314,7 +315,7 @@ void sort_piram(FILE *file)
 
     for(int i = count_elements; i>=2; i--)
     {
-        printf("%d %d\n",find_element_by_num(0),find_element_by_num(i));
+        
         change_elements(find_element_by_count(0),find_element_by_count(i));
         printf("da");
         int root=1;
