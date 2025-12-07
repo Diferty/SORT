@@ -6,4 +6,8 @@ all:
 clean:
 	rm -f $(PROGRAM)
 run:
-	./$(PROGRAM)
+	./$(PROGRAM) 
+run_sort:
+	./$(PROGRAM) --file sort.txt
+run_graphics:
+	./$(PROGRAM) --file graphics.txt

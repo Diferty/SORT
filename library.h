@@ -7,11 +7,14 @@ typedef struct elem
     struct elem *prev;
     struct elem *next;
 } Elem;
-
+void print_file();
+void program_going(int num, char *files[]);
+void hand_enter();
+int start_file(int num, char *files[]);
 void change_elements(Elem *p, Elem *pk);
-void start_enter(FILE *file);
+int start_enter(FILE *file);
 void delete_dek();
-void bubble_sort(FILE *file, FILE *file_graphic);
+void bubble_sort(FILE *file);
 int find_element_by_num(int num);
 Elem *find_element_by_count(int num);
 int find_element_by_way(Elem *p);
