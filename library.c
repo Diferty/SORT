@@ -21,6 +21,7 @@ char enter_next[100];
 char *enter;
 clock_t start, end;
 double cpu_time_used;
+
 void program_going(int num, char *files[])
 {
     
@@ -111,18 +112,19 @@ void hand_enter(){
                 fputs("Отсортированные числа:\n",file);
                 fprintf(file,"%s\n",enter);
             }
-            if(count_elements>=2) 
+            if(count_elements==2) 
             {   
-                start=clock();
                 bubble_sort(file);
-                end=clock();
-                cpu_time_used = ((double) (end-start)) / CLOCKS_PER_SEC;
-                fprintf(file_graphics,"%d %f ", count_elements, cpu_time_used);
             
             }
             if(count_elements>=3)
             { 
                 start=clock();
+                bubble_sort(file);
+                end=clock();
+                cpu_time_used = ((double) (end-start)) / CLOCKS_PER_SEC;
+                fprintf(file_graphics,"%d %f ", count_elements, cpu_time_used);
+                start=clock(); 
                 sort_piram(file);
                 end=clock();
                 cpu_time_used = ((double) (end-start)) / CLOCKS_PER_SEC;
@@ -133,8 +135,7 @@ void hand_enter(){
         else fputs("Нет входных данных\n",file);
         fclose(file);
         fclose(file_graphics);
-        printf("%d\n", count_elements);
-        printf("ЕСЛИ ХОТИТЕ ПРОДОЛЖИТЬ НАЖМИТЕ 1, ИНАЧЕ ДРУГУЮ КНОПКУ\n");
+        printf("ЕСЛИ ХОТИТЕ ПРОДОЛЖИТЬ НАЖМИТЕ 1, ИНАЧЕ ДРУГУЮ КНОПКУ\n(Не забудте добавить/измненить значения в файле file_read.txt)\n");
         fgets(enter_next, sizeof(enter_next),stdin);
         enter_next[strcspn(enter_next,"\n")]=0;
         if(atoi(enter_next)!=1) break;
